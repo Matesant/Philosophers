@@ -1,5 +1,5 @@
 CC			:= cc
-NAME 		:= philosophers
+NAME 		:= philo
 CFLAGS		:= -Wall -Werror -Wextra -g3 -O0
 BIN			:= ./bin/
 HEADER		:= ./include/
