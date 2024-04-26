@@ -5,28 +5,13 @@ BIN			:= ./bin/
 HEADER		:= ./include/
 SOURCE		:=	main.c
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
-PRINTF		:= ./libft/Printf/libftprintf.a
-LIBFT		:= ./libft/libft.a
-42LIBS		:= $(PRINTF) $(LIBFT)
 
 BLUE = \033[1;34m
 RED=\033[0;31m
 GREEN=\033[0;32m
 END=\033[0m
 
-all: $(42LIBS) $(BIN) $(NAME)
-
-$(LIBFT):
-	@printf "$(BLUE)---------------------$(END)\n"
-	@printf "$(BLUE)--Compiling Libft...-$(END)\n"
-	@printf "$(BLUE)---------------------$(END)\n"
-	@make -C ./libft --no-print-directory
-
-$(PRINTF):
-	@printf "$(BLUE)---------------------$(END)\n"
-	@printf "$(BLUE)-Compiling Printf...-$(END)\n"
-	@printf "$(BLUE)---------------------$(END)\n"
-	@make -C ./libft/Printf --no-print-directory
+all: $(BIN) $(NAME)
 
 $(BIN):
 	@mkdir -p $(BIN)
@@ -48,20 +33,16 @@ $(NAME): $(OBJECTS) $(HEADER)philosophers.h
 
 clean:
 	@printf "$(RED)Cleaning...$(END)\n"
-	@make -C ./libft/Printf clean --no-print-directory
-	@make -C ./libft clean --no-print-directory
 	@rm -rf $(BIN)
 
 fclean: clean
 	@printf "$(RED)Cleaning...$(END)\n"
-	@make -C ./libft/Printf --no-print-directory fclean
-	@make -C ./libft --no-print-directory fclean
 	@rm -rf $(NAME)
 	@printf "$(GREEN)All cleaned!$(END)\n"
 
 re: fclean all
 
 val:
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo
 
 .PHONY: all clean fclean re val
