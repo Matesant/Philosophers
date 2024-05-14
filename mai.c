@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   mai.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 16:04:01 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/07 14:22:59 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/08 12:56:47 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/08 18:00:03 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <time.h>
 #include <unistd.h>
 
-typedef enum e_bool
-{
-	FALSE,
-	TRUE
-}		t_bool;
+int				prime[10] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
-/*---------------------------USER-VALIDATIONS---------------------*/
-t_bool	ft_validate_user_input(int argc, char **argv);
-int		ft_isdigit(int c);
-/*----------------------------------------------------------------*/
+void	*faz_o_l(void *ints)
+{
+	int	store;
+
+	store = *(int *)ints;
+	printf("Thread %d\n", prime[store]);
+	free(ints);
+	return (NULL);
+}
+
+int	main(int argc, char **argv)
+{
+	pthread_t	t1[9];
+	int			i;
+	int			*store;
+
+	i = -1;
+	while (++i <= 9)
+	{
+		store = malloc(sizeof(int));
+		*store = i;
+		pthread_create(&t1[i], NULL, &faz_o_l, store);
+	}
+	i = -1;
+	while (++i <= 9)
+		pthread_join(t1[i], NULL);
+	return (0);
+}

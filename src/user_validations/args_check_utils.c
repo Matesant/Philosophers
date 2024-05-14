@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   args_check_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 16:04:01 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/07 14:22:59 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/07 14:17:49 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/07 14:18:10 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include "philosophers.h"
 
-typedef enum e_bool
+int ft_isdigit(int c)
 {
-	FALSE,
-	TRUE
-}		t_bool;
-
-/*---------------------------USER-VALIDATIONS---------------------*/
-t_bool	ft_validate_user_input(int argc, char **argv);
-int		ft_isdigit(int c);
-/*----------------------------------------------------------------*/
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}

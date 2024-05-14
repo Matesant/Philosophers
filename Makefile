@@ -1,9 +1,9 @@
 CC			:= cc
 NAME 		:= philo
-CFLAGS		:= -Wall -Werror -Wextra -g3 -O0
+CFLAGS		:= -Wall -Werror -Wextra -g3 -O0 -pthread
 BIN			:= ./bin/
 HEADER		:= ./include/
-SOURCE		:=	main.c
+SOURCE		:=	main.c user_input.c args_check_utils.c
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
 
 BLUE = \033[1;34m
@@ -17,6 +17,12 @@ $(BIN):
 	@mkdir -p $(BIN)
 
 $(BIN)%.o: ./src/%.c $(HEADER)philosophers.h
+	@printf "$(BLUE)-----------------------------------------------$(END)\n"
+	@printf "$(BLUE)Compiling $<...$(END)\n"
+	@printf "$(BLUE)-----------------------------------------------$(END)\n"
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
+
+$(BIN)%.o: ./src/user_validations/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
