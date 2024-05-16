@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:08:33 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/16 12:58:38 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:59:52 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ t_bool	ft_validate_user_input(int argc, char **argv)
 	return (FALSE);
 }
 
-static t_bool	ft_number_args(int argc)
+static t_bool	ft_number_args(int user_input)
 {
-	if (argc == 1)
+	if (user_input == 1)
 	{
 		printf("How to use:\n ./philo\n [1][number_of_philosophers]\n");
 		printf(" [2][time_to_die]\n [3][time_to_eat]\n [4][time_to_sleep]\n [5](optional)[number_of_times_each_philosopher_must_eat]\n");
 		printf("Example: ./philo 5 800 200 200\n");
 		return (TRUE);
 	}
-	if (argc != 5 && argc != 6)
+	if (user_input != 5 && user_input != 6)
 	{
 		printf("Error: wrong number of arguments\n");
 		return (TRUE);
