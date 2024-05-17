@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:04:01 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 17:53:43 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:01:40 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_philo
 	struct timeval	last_meal;
 	pthread_t		philosopher_activity;
 }					t_philo;
+
 typedef struct s_dining_etiquette
 {
 	int				numb_philo;
@@ -43,6 +44,7 @@ typedef struct s_dining_etiquette
 }					t_dining_etiquette;
 
 t_dining_etiquette	*ft_get_rules(void);
+void	ft_philosophers_sit_down(t_dining_etiquette **rules);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);
@@ -54,7 +56,7 @@ long				ft_atol(char *number_string);
 /*---------------------------------------------------------------------------*/
 
 /*---------------------------PHILOSOPHERS-RULES------------------------------*/
-void				ft_set_tabble_manners(t_dining_etiquette *tabble_manners,
+void				ft_set_tabble_manners(t_dining_etiquette **tabble_manners,
 						char **argv);
-void				ft_set_philosophers_rules(void);
+void				ft_set_philosophers_rules(t_dining_etiquette **rules);
 /*---------------------------------------------------------------------------*/

@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:06:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 17:53:57 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/17 20:00:49 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_print_tabble_manners(t_dining_etiquette *tabble_manners)
 
 int	main(int argc, char **argv)
 {
-	t_dining_etiquette	tabble_manners;
+	t_dining_etiquette	*tabble_manners;
 
-	tabble_manners = *ft_get_rules();
+	tabble_manners = ft_get_rules();
 	if (ft_validate_user_input(argc, argv) == TRUE)
 		return (1);
 	ft_set_tabble_manners(&tabble_manners, argv);
-	ft_set_philosophers_rules();
-	ft_print_tabble_manners(&tabble_manners);
+	ft_set_philosophers_rules(&tabble_manners);
+	ft_philosophers_sit_down(&tabble_manners);
 	return (0);
 }
 
