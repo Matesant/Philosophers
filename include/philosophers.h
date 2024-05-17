@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:04:01 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/16 14:11:53 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:53:43 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ typedef struct s_philo
 }					t_philo;
 typedef struct s_dining_etiquette
 {
-	int				number_of_philosophers;
+	int				numb_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				number_of_times_each_philosopher_must_eat;
+	int				number_times_philosophers_must_eat;
 	pthread_mutex_t	forks[200];
 	t_philo			philosophers[200];
 }					t_dining_etiquette;
+
+t_dining_etiquette	*ft_get_rules(void);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);
@@ -54,4 +56,5 @@ long				ft_atol(char *number_string);
 /*---------------------------PHILOSOPHERS-RULES------------------------------*/
 void				ft_set_tabble_manners(t_dining_etiquette *tabble_manners,
 						char **argv);
+void				ft_set_philosophers_rules(void);
 /*---------------------------------------------------------------------------*/

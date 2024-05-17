@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   user_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:08:33 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/16 12:59:52 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/17 17:54:15 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ static t_bool	ft_number_args(int user_input)
 {
 	if (user_input == 1)
 	{
-		printf("How to use:\n ./philo\n [1][number_of_philosophers]\n");
-		printf(" [2][time_to_die]\n [3][time_to_eat]\n [4][time_to_sleep]\n [5](optional)[number_of_times_each_philosopher_must_eat]\n");
-		printf("Example: ./philo 5 800 200 200\n");
+		printf(" How to use:\n ./philo\n [1][number_of_philosophers]\n");
+		printf(" [2][time_to_die]\n [3][time_to_eat]\n");
+		printf(" [4][time_to_sleep]\n");
+		printf(" [5][number_of_times_each_philosopher_must_eat]\n");
+		printf(" Example: ./philo 5 800 200 200\n");
 		return (TRUE);
 	}
 	if (user_input != 5 && user_input != 6)
