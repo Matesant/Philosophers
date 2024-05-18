@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:04:01 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 23:13:10 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/18 01:15:21 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	struct timeval	last_meal;
+	int				eating_sessions;
 	pthread_t		philo_action;
 }					t_philo;
 
