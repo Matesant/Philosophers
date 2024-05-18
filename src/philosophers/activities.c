@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_creation.c                                   :+:      :+:    :+:   */
+/*   activities.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 22:31:05 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/17 22:34:54 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/17 23:56:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	ft_set_philosophers_rules(t_dining_etiquette **rules)
+void	ft_eat_meal(t_philo *philo)
 {
-	int					id;
+	pthread_mutex_t	*forks;
 
-	id = (*rules)->numb_philo;
-	while (id >= 0)
-	{
-		(*rules)->philosophers[id].left_fork = id;
-		(*rules)->philosophers[id].id = id + 1;
-		(*rules)->philosophers[id].right_fork = (id + 1) % (*rules)->numb_philo;
-		id--;
-	}
+	forks = ft_get_rules()->forks;
+	pthread_mutex_lock(&forks[philo->left_fork]);
+	pthread_mutex_lock(&forks[philo->right_fork]);
+	usleep(ft_get_rules()->time_to_eat * 100);
+	printf("Philosopher %d is eating\n", philo->id);
+	pthread_mutex_unlock(&forks[philo->left_fork]);
+	pthread_mutex_unlock(&forks[philo->right_fork]);
+	printf("Philosopher %d is sleeping\n", philo->id);
 }

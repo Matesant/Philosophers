@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:06:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 20:00:49 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/17 22:33:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ void	ft_print_tabble_manners(t_dining_etiquette *tabble_manners)
 	printf("time_to_sleep: %d\n", tabble_manners->time_to_sleep);
 	printf("number_of_times_each_philosopher_must_eat: %d\n",
 		tabble_manners->number_times_philosophers_must_eat);
+}
+
+void	ft_print_philosophers(t_dining_etiquette *tabble_manners)
+{
+	int	id;
+
+	id = 0;
+	while (id < tabble_manners->numb_philo)
+	{
+		printf("-----------------------------------------------\n");
+		printf("Philosopher %d\n", tabble_manners->philosophers[id].id);
+		printf("left_fork: %d\n", tabble_manners->philosophers[id].left_fork);
+		printf("right_fork: %d\n", tabble_manners->philosophers[id].right_fork);
+		printf("-----------------------------------------------\n");
+		id++;
+	}
 }
 
 int	main(int argc, char **argv)
