@@ -3,7 +3,7 @@ NAME 		:= philo
 CFLAGS		:= -Wall -Werror -Wextra -g3 -O0 -pthread
 BIN			:= ./bin/
 HEADER		:= ./include/
-SOURCE		:=	main.c user_input.c args_check_utils.c ft_atol.c tabble_manners.c philo_creation.c dinner_time.c activities.c
+SOURCE		:=	main.c user_input.c args_check_utils.c ft_atol.c tabble_manners.c dinner_time.c activities.c philo_mutex_creation.c
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
 
 BLUE = \033[1;34m
