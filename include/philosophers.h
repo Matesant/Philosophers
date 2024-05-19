@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 01:12:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 12:48:07 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:51:23 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,18 @@ typedef struct s_dining_etiquette
 	int				time_to_sleep;
 	int				number_times_philo_must_eat;
 	long long		program_start_time;
-	pthread_mutex_t	forks[200];
+	pthread_mutex_t	forks[199];
 	pthread_mutex_t	waiting_for_philo_take_fork;
-	t_philo			philosophers[200];
+	pthread_mutex_t	write_rights;
+	t_philo			philosophers[199];
 }					t_dining_etiquette;
 
 t_dining_etiquette	*ft_get_rules(void);
 void				ft_philosophers_sit_down(t_dining_etiquette **rules);
 void				ft_eat_meal(t_philo *philo);
-void				ft_init_fork_mutex(void);
-long long			ft_update_timestamp(void);
+int					ft_init_fork_mutex(void);
+long long			ft_clock(void);
+long long			ft_get_ms(void);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);

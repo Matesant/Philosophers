@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:00:40 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 23:21:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:43:34 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 void	*ft_philosophers_arrive_for_dinner(void *void_philo)
 {
 	t_philo	*philo;
+	int		i;
 
 	philo = (t_philo *)void_philo;
-	while (1)
+	i = 0;
+	while (i < 5)
 	{
 		ft_eat_meal(philo);
+		i++;
 	}
 	return (NULL);
 }
@@ -36,7 +39,8 @@ void	ft_philosophers_sit_down(t_dining_etiquette **rules)
 			(void *)&(*rules)->philosophers[id]);
 		id++;
 	}
-	while (id)
+	id--;
+	while (id >= 0)
 	{
 		pthread_join((*rules)->philosophers[id].philo_action, NULL);
 		id--;

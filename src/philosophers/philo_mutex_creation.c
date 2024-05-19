@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 11:54:38 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:32:30 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_set_philosophers_rules(t_dining_etiquette **rules)
 {
 	int	id;
 
-	id = (*rules)->numb_philo;
+	id = (*rules)->numb_philo - 1;
 	while (id >= 0)
 	{
 		(*rules)->philosophers[id].left_fork = id;
@@ -26,16 +26,20 @@ void	ft_set_philosophers_rules(t_dining_etiquette **rules)
 	}
 }
 
-void	ft_init_fork_mutex(void)
+int	ft_init_fork_mutex(void)
 {
 	int					id;
 	t_dining_etiquette	*rules;
 
-	id = ft_get_rules()->numb_philo - 1;
+	id = ft_get_rules()->numb_philo;
 	rules = ft_get_rules();
 	while (id >= 0)
 	{
-		pthread_mutex_init(&(rules)->forks[id], NULL);
+		if (pthread_mutex_init(&(rules)->forks[id], NULL))
+			return (1);
 		id--;
 	}
+	if (pthread_mutex_init(&rules->waiting_for_philo_take_fork, NULL))
+		return (1);
+	return (0);
 }

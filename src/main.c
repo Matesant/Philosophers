@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:06:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 12:47:43 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:24:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_print_philosophers(t_dining_etiquette *tabble_manners)
 	int	id;
 
 	id = 0;
-	while (id < tabble_manners->numb_philo)
+	while (id <= tabble_manners->numb_philo)
 	{
 		printf("-----------------------------------------------\n");
 		printf("Philosopher %d\n", tabble_manners->philosophers[id].id);
@@ -47,7 +47,8 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_set_tabble_manners(&tabble_manners, argv);
 	ft_set_philosophers_rules(&tabble_manners);
-	ft_init_fork_mutex();
+	if (ft_init_fork_mutex())
+		return (1);
 	ft_philosophers_sit_down(&tabble_manners);
 	return (0);
 }
