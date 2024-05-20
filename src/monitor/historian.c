@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 20:03:18 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 22:38:41 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/20 01:01:10 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,26 @@ void	ft_historian(void)
 	t_dining_etiquette	*rules;
 
 	rules = ft_get_rules();
-	philo_id = 0;
-	while ((philo_id < ft_get_rules()->numb_philo - 1) && !rules->corpse)
+	while (1)
 	{
-		pthread_mutex_lock(&rules->write_rights);
-		if (ft_get_ms()
-			- rules->philosophers[philo_id].last_meal > rules->time_to_die)
+		philo_id = 0;
+		while ((philo_id < ft_get_rules()->numb_philo) && !rules->philo_dead)
 		{
-			printf("%lld %d died\n", ft_get_ms(),
-				rules->philosophers[philo_id].id);
-			rules->corpse = 1;
-			break ;
+			pthread_mutex_unlock(&ft_get_rules()->waiting_for_philo_take_fork);
+			pthread_mutex_lock(&rules->write_rights);
+			if (ft_get_ms()
+				- rules->philosophers[philo_id].last_meal > rules->time_to_die)
+			{
+				printf("%lld %d died\n", ft_get_ms(),
+					rules->philosophers[philo_id].id);
+				rules->corpse = 1;
+				rules->philo_dead = 1;
+				pthread_mutex_unlock(&rules->write_rights);
+				return ;
+			}
+			pthread_mutex_unlock(&rules->write_rights);
+			philo_id++;
 		}
-		pthread_mutex_unlock(&rules->write_rights);
-		usleep(100);
-		philo_id++;
+		pthread_mutex_unlock(&ft_get_rules()->waiting_for_philo_take_fork);
 	}
 }

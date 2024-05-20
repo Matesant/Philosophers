@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 16:32:30 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/20 00:06:10 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_init_fork_mutex(void)
 		id--;
 	}
 	if (pthread_mutex_init(&rules->waiting_for_philo_take_fork, NULL))
+		return (1);
+	if (pthread_mutex_init(&rules->write_rights, NULL))
 		return (1);
 	return (0);
 }

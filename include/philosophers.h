@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 01:12:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 21:31:00 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/20 00:53:18 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ typedef struct s_dining_etiquette
 	pthread_mutex_t	forks[199];
 	pthread_mutex_t	waiting_for_philo_take_fork;
 	pthread_mutex_t	write_rights;
+	int				philo_dead;
 	t_philo			philosophers[199];
 }					t_dining_etiquette;
 
 t_dining_etiquette	*ft_get_rules(void);
 int					ft_philosophers_sit_down(t_dining_etiquette **rules);
-void				ft_eat_meal(t_philo *philo);
+t_bool				ft_eat_meal(t_philo *philo);
 int					ft_init_fork_mutex(void);
 long long			ft_clock(void);
 long long			ft_get_ms(void);
