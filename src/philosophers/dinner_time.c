@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:00:40 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 16:43:34 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 22:36:14 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,38 @@
 void	*ft_philosophers_arrive_for_dinner(void *void_philo)
 {
 	t_philo	*philo;
-	int		i;
 
 	philo = (t_philo *)void_philo;
-	i = 0;
-	while (i < 5)
+	if (philo->id % 2 == 0)
+		usleep(15000);
+	while (!ft_get_rules()->corpse)
 	{
 		ft_eat_meal(philo);
-		i++;
+		ft_print_actions(philo, "is sleeping");
+		ft_activity_time(ft_get_rules()->time_to_sleep);
+		ft_print_actions(philo, "is thinking");
 	}
 	return (NULL);
 }
 
-void	ft_philosophers_sit_down(t_dining_etiquette **rules)
+int	ft_philosophers_sit_down(t_dining_etiquette **rules)
 {
-	int	id;
+	int			id;
 
 	id = 0;
 	while (id < (*rules)->numb_philo)
 	{
-		pthread_create(&(*rules)->philosophers[id].philo_action, NULL,
-			ft_philosophers_arrive_for_dinner,
-			(void *)&(*rules)->philosophers[id]);
+		if (pthread_create(&(*rules)->philosophers[id].philo_action, NULL,
+				ft_philosophers_arrive_for_dinner,
+				(void *)&(*rules)->philosophers[id]))
+			return (1);
 		id++;
 	}
-	id--;
+	ft_historian();
 	while (id >= 0)
 	{
 		pthread_join((*rules)->philosophers[id].philo_action, NULL);
 		id--;
 	}
+	return (0);
 }

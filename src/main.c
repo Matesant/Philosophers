@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:06:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 16:24:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/19 20:20:45 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	main(int argc, char **argv)
 	ft_set_philosophers_rules(&tabble_manners);
 	if (ft_init_fork_mutex())
 		return (1);
-	ft_philosophers_sit_down(&tabble_manners);
+	if (ft_philosophers_sit_down(&tabble_manners))
+		return (1);
 	return (0);
 }
 
