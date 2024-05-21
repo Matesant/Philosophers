@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   activities.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 22:34:54 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/20 23:52:57 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:40:55 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void	ft_get_forks(t_philo *philo)
 	pthread_mutex_t	*forks;
 
 	forks = ft_get_rules()->forks;
-	pthread_mutex_lock(&ft_get_rules()->waiting_for_philo_take_fork);
-	if (ft_get_rules()->corpse == FALSE)
+	if (ft_is_dead(philo))
 	{
 		if (philo->id % 2 == 0)
 		{
@@ -49,7 +48,6 @@ static void	ft_get_forks(t_philo *philo)
 			ft_print_actions(philo, "has taken a fork");
 		}
 	}
-	pthread_mutex_unlock(&ft_get_rules()->waiting_for_philo_take_fork);
 }
 
 static void	ft_return_forks(t_philo *philo)
@@ -57,8 +55,11 @@ static void	ft_return_forks(t_philo *philo)
 	pthread_mutex_t	*forks;
 
 	forks = ft_get_rules()->forks;
-	pthread_mutex_unlock(&forks[philo->left_fork]);
-	pthread_mutex_unlock(&forks[philo->right_fork]);
+	if (ft_is_dead(philo))
+	{
+		pthread_mutex_unlock(&forks[philo->left_fork]);
+		pthread_mutex_unlock(&forks[philo->right_fork]);
+	}
 }
 
 static void	ft_update_last_meal_time(t_philo *philo)

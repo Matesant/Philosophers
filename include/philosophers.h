@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 01:12:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/20 00:53:18 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:21:58 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_dining_etiquette
 	int				time_to_sleep;
 	int				corpse;
 	int				number_times_philo_must_eat;
+	int				philos_finished;
 	long long		program_start_time;
 	pthread_mutex_t	forks[199];
 	pthread_mutex_t	waiting_for_philo_take_fork;
@@ -53,11 +54,13 @@ t_dining_etiquette	*ft_get_rules(void);
 int					ft_philosophers_sit_down(t_dining_etiquette **rules);
 t_bool				ft_eat_meal(t_philo *philo);
 int					ft_init_fork_mutex(void);
-long long			ft_clock(void);
+long long			ft_return_time_of_day(void);
 long long			ft_get_ms(void);
 void				ft_activity_time(long long time);
 void				ft_historian(void);
 void				ft_print_actions(t_philo *philo, char *action);
+t_bool				ft_dead_or_alive(void);
+t_bool				ft_is_dead(t_philo *philo);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);
