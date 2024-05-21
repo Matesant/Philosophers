@@ -6,25 +6,11 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/20 00:06:10 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:50:36 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-void	ft_set_philosophers_rules(t_dining_etiquette **rules)
-{
-	int	id;
-
-	id = (*rules)->numb_philo - 1;
-	while (id >= 0)
-	{
-		(*rules)->philosophers[id].left_fork = id;
-		(*rules)->philosophers[id].id = id + 1;
-		(*rules)->philosophers[id].right_fork = (id + 1) % (*rules)->numb_philo;
-		id--;
-	}
-}
 
 int	ft_init_fork_mutex(void)
 {
