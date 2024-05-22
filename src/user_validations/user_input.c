@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   user_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:08:33 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/17 20:00:09 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:20:39 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_bool	ft_number_args(int argc);
 static t_bool	ft_check_not_number(char **argv);
 static t_bool	ft_valid_parameters(char **parameters);
+static t_bool	ft_check_number_of_meals(char **parameters);
 
 t_bool	ft_validate_user_input(int argc, char **argv)
 {
@@ -24,6 +25,7 @@ t_bool	ft_validate_user_input(int argc, char **argv)
 		return (TRUE);
 	if (ft_valid_parameters(argv) == TRUE)
 		return (TRUE);
+	ft_check_number_of_meals(argv);
 	return (FALSE);
 }
 
@@ -81,7 +83,8 @@ static t_bool	ft_valid_parameters(char **parameters)
 	miliseconds_input = 2;
 	while (parameters[miliseconds_input])
 	{
-		if (ft_atol(parameters[miliseconds_input]) < 60)
+		if (ft_atol(parameters[miliseconds_input]) < 60
+			&& miliseconds_input != 5)
 		{
 			printf("Error: time in parameter [%d] must be at least 60ms\n",
 				miliseconds_input);
@@ -89,5 +92,17 @@ static t_bool	ft_valid_parameters(char **parameters)
 		}
 		miliseconds_input++;
 	}
+	return (FALSE);
+}
+
+static t_bool	ft_check_number_of_meals(char **parameters)
+{
+	if (parameters[5] && ft_atol(parameters[5]) < 1)
+	{
+		printf("Error: number of meals must be at least 1\n");
+		return (TRUE);
+	}
+	if (!parameters[5])
+		parameters[5] = "-1";
 	return (FALSE);
 }

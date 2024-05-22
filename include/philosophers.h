@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 01:12:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 14:40:20 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/22 15:31:14 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,11 @@ typedef struct s_dining_etiquette
 	int				time_to_sleep;
 	int				corpse;
 	int				number_times_philo_must_eat;
-	int				philos_finished;
+	int				philos_finished_eating;
 	long long		program_start_time;
 	pthread_mutex_t	forks[200];
 	pthread_mutex_t	waiting_for_philo_take_fork;
 	pthread_mutex_t	write_rights;
-	int				philo_dead;
 	t_philo			philosophers[200];
 }					t_dining_etiquette;
 
@@ -69,6 +68,7 @@ t_bool				ft_dead_or_alive(void);
 t_bool				ft_is_dead(t_philo *philo);
 t_mutex				*ft_get_mutex(void);
 void				ft_exit(void);
+int					ft_how_many_finished(void);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);

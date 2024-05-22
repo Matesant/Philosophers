@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:00:40 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 14:36:59 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 15:47:22 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_wait_for_threads_finish(void);
 t_bool	ft_dead_or_alive(void);
+t_bool	ft_all_eaten(void);
 
 void	ft_exit(void);
 
@@ -26,6 +27,8 @@ void	*ft_philosophers_arrive_for_dinner(void *void_philo)
 		usleep(10000);
 	while (!ft_dead_or_alive())
 	{
+		if (ft_all_eaten())
+			break ;
 		ft_eat_meal(philo);
 		ft_print_actions(philo, "is sleeping");
 		ft_activity_time(ft_get_rules()->time_to_sleep);
@@ -80,27 +83,10 @@ void	ft_exit(void)
 	pthread_mutex_destroy(&ft_get_mutex()->philo_dead_verification);
 }
 
-void	ft_wait_for_threads_finish(void)
-{
-	t_dining_etiquette	*rules;
-	pthread_mutex_t		philo;
-
-	rules = ft_get_rules();
-	pthread_mutex_init(&philo, NULL);
-	pthread_mutex_lock(&rules->write_rights);
-	rules->philos_finished++;
-	pthread_mutex_unlock(&rules->write_rights);
-	while (1)
-	{
-		if (rules->philos_finished == rules->numb_philo)
-			break ;
-	}
-}
-
 t_bool	ft_dead_or_alive(void)
 {
-	t_dining_etiquette *rules;
-	t_mutex *mutex;
+	t_dining_etiquette	*rules;
+	t_mutex				*mutex;
 
 	rules = ft_get_rules();
 	mutex = ft_get_mutex();
@@ -111,5 +97,22 @@ t_bool	ft_dead_or_alive(void)
 		return (TRUE);
 	}
 	pthread_mutex_unlock(&mutex->philo_dead_verification);
+	return (FALSE);
+}
+
+t_bool	ft_all_eaten(void)
+{
+	t_dining_etiquette *rules;
+	t_mutex *mutex;
+
+	rules = ft_get_rules();
+	mutex = ft_get_mutex();
+	pthread_mutex_lock(&mutex->meals_verification);
+	if (rules->philos_finished_eating)
+	{
+		pthread_mutex_unlock(&mutex->meals_verification);
+		return (TRUE);
+	}
+	pthread_mutex_unlock(&mutex->meals_verification);
 	return (FALSE);
 }
