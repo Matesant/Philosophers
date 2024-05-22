@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:00:40 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 15:47:22 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:59:55 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,13 @@ int	ft_philosophers_sit_down(t_dining_etiquette **rules)
 	(*rules)->program_start_time = ft_return_time_of_day();
 	while (id < (*rules)->numb_philo)
 	{
-		if (pthread_create(&(*rules)->philosophers[id].philo_action, NULL,
+		if ((*rules)->numb_philo == 1)
+		{
+			if (pthread_create(&(*rules)->philosophers[id].philo_action, NULL,
+					ft_alone_in_the_dark, (void *)&(*rules)->philosophers[id]))
+				return (1);
+		}
+		else if (pthread_create(&(*rules)->philosophers[id].philo_action, NULL,
 				ft_philosophers_arrive_for_dinner,
 				(void *)&(*rules)->philosophers[id]))
 			return (1);
@@ -102,8 +108,8 @@ t_bool	ft_dead_or_alive(void)
 
 t_bool	ft_all_eaten(void)
 {
-	t_dining_etiquette *rules;
-	t_mutex *mutex;
+	t_dining_etiquette	*rules;
+	t_mutex				*mutex;
 
 	rules = ft_get_rules();
 	mutex = ft_get_mutex();
@@ -115,4 +121,17 @@ t_bool	ft_all_eaten(void)
 	}
 	pthread_mutex_unlock(&mutex->meals_verification);
 	return (FALSE);
+}
+
+void	*ft_alone_in_the_dark(void *void_philo)
+{
+	t_philo			*philo;
+	pthread_mutex_t	*forks;
+
+	philo = (t_philo *)void_philo;
+	forks = ft_get_rules()->forks;
+	pthread_mutex_lock(&forks[philo->left_fork]);
+	ft_print_actions(philo, "has taken a fork");
+	pthread_mutex_unlock(&forks[philo->left_fork]);
+	return (NULL);
 }

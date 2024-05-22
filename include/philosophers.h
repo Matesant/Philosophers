@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 15:31:14 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:58:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_bool				ft_is_dead(t_philo *philo);
 t_mutex				*ft_get_mutex(void);
 void				ft_exit(void);
 int					ft_how_many_finished(void);
+void				*ft_alone_in_the_dark(void *void_philo);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);

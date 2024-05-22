@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:13 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 16:04:40 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:39:17 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ int	ft_how_many_finished(void)
 	{
 		philo = &ft_get_rules()->philosophers[id];
 		pthread_mutex_lock(&ft_get_mutex()->meals_verification);
-		if (philo->eating_sessions >= ft_get_rules()->numb_philo)
+		if (philo->eating_sessions >= ft_get_rules()->number_times_philo_must_eat)
 			how_many_philos_finished++;
 		pthread_mutex_unlock(&ft_get_mutex()->meals_verification);
 		id++;
 	}
-	printf("how many finished: %d\n", how_many_philos_finished);
 	return (how_many_philos_finished);
 }

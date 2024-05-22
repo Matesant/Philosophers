@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 20:03:18 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 15:49:00 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:39:35 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_bool	ft_completed_caloric_intake(t_dining_etiquette *rules)
 	id = 0;
 	if (rules->number_times_philo_must_eat == -1)
 		return (FALSE);
-	if (ft_how_many_finished() == rules->number_times_philo_must_eat)
+	if (ft_how_many_finished() == rules->numb_philo)
 	{
 		pthread_mutex_lock(&ft_get_mutex()->meals_verification);
 		rules->philos_finished_eating++;
