@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:49:05 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/21 17:20:32 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:17:38 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,18 @@ long long	ft_get_ms(void)
 
 void	ft_activity_time(long long time)
 {
-	usleep(time * 1000);
+	if (!ft_dead_or_alive())
+		usleep(time * 1000);
 }
 
 t_bool	ft_is_dead(t_philo *philo)
 {
-	pthread_mutex_lock(&ft_get_rules()->write_rights);
+	pthread_mutex_lock(&ft_get_mutex()->meals_verification);
 	if (ft_get_ms() - philo->last_meal > ft_get_rules()->time_to_die)
 	{
-		pthread_mutex_unlock(&ft_get_rules()->write_rights);
+		pthread_mutex_unlock(&ft_get_mutex()->meals_verification);
 		return (1);
 	}
-	pthread_mutex_unlock(&ft_get_rules()->write_rights);
+	pthread_mutex_unlock(&ft_get_mutex()->meals_verification);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_mutex_creation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/20 23:50:36 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:36:40 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	ft_init_fork_mutex(void)
 	if (pthread_mutex_init(&rules->waiting_for_philo_take_fork, NULL))
 		return (1);
 	if (pthread_mutex_init(&rules->write_rights, NULL))
+		return (1);
+	if (pthread_mutex_init(&ft_get_mutex()->meals_verification, NULL))
+		return (1);
+	if (pthread_mutex_init(&ft_get_mutex()->philo_dead_verification, NULL))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 01:12:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/21 17:21:58 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:40:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef enum e_bool
 	FALSE,
 	TRUE
 }					t_bool;
+
+typedef struct s_mutex
+{
+	pthread_mutex_t	philo_dead_verification;
+	pthread_mutex_t	meals_verification;
+}					t_mutex;
 
 typedef struct s_philo
 {
@@ -43,11 +49,11 @@ typedef struct s_dining_etiquette
 	int				number_times_philo_must_eat;
 	int				philos_finished;
 	long long		program_start_time;
-	pthread_mutex_t	forks[199];
+	pthread_mutex_t	forks[200];
 	pthread_mutex_t	waiting_for_philo_take_fork;
 	pthread_mutex_t	write_rights;
 	int				philo_dead;
-	t_philo			philosophers[199];
+	t_philo			philosophers[200];
 }					t_dining_etiquette;
 
 t_dining_etiquette	*ft_get_rules(void);
@@ -61,6 +67,8 @@ void				ft_historian(void);
 void				ft_print_actions(t_philo *philo, char *action);
 t_bool				ft_dead_or_alive(void);
 t_bool				ft_is_dead(t_philo *philo);
+t_mutex				*ft_get_mutex(void);
+void				ft_exit(void);
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:06:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/19 20:20:45 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:28:44 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_philosophers_sit_down(&tabble_manners))
 		return (1);
+	ft_exit();
 	return (0);
 }
 
@@ -59,4 +60,11 @@ t_dining_etiquette	*ft_get_rules(void)
 	static t_dining_etiquette	tabble_manners;
 
 	return (&tabble_manners);
+}
+
+t_mutex	*ft_get_mutex(void)
+{
+	static t_mutex	mutex;
+
+	return (&mutex);
 }

@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 20:03:18 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/21 17:21:04 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:27:39 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void	ft_historian(void)
 	while (1)
 	{
 		philo_id = 0;
-		while ((philo_id < ft_get_rules()->numb_philo) && ft_dead_or_alive())
+		while ((philo_id < ft_get_rules()->numb_philo))
 		{
 			if (ft_is_dead(&rules->philosophers[philo_id]))
 			{
 				ft_print_actions(&rules->philosophers[philo_id], "died");
-				pthread_mutex_lock(&rules->write_rights);
+				pthread_mutex_lock(&ft_get_mutex()->philo_dead_verification);
 				rules->corpse = 1;
-				rules->philo_dead = 1;
-				pthread_mutex_unlock(&rules->write_rights);
+				pthread_mutex_unlock(&ft_get_mutex()->philo_dead_verification);
 				return ;
 			}
 			philo_id++;
