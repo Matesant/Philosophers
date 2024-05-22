@@ -6,15 +6,18 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:14:59 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:23:45 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
+
+# include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <unistd.h>
 
 typedef enum e_bool
 {
@@ -79,6 +82,8 @@ void				ft_set_philosophers_rules(t_dining_etiquette **rules);
 void				ft_historian(void);
 t_bool				ft_dead_or_alive(void);
 t_bool				ft_is_dead(t_philo *philo);
+t_bool				ft_completed_caloric_intake(t_dining_etiquette *rules);
+t_bool				ft_there_is_a_corpse_on_table(t_philo *philo);
 /*---------------------------------------------------------------------------*/
 
 /*---------------------------ROUTINE-----------------------------------------*/
@@ -113,3 +118,5 @@ void				ft_exit(void);
 /*---------------------------UTILS-------------------------------------------*/
 int					ft_how_many_finished(void);
 /*---------------------------------------------------------------------------*/
+
+#endif

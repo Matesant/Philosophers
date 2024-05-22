@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:00:40 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:17:01 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:22:05 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int	ft_philosophers_sit_down(t_dining_etiquette **rules)
 	ft_historian();
 	return (0);
 }
-

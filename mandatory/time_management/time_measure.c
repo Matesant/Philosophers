@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:49:05 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:05:16 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:21:47 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long long	ft_get_ms(void)
 
 void	ft_activity_time(long long time)
 {
-		usleep(time * 1000);
+	usleep(time * 1000);
 }
 
 t_bool	ft_is_dead(t_philo *philo)
