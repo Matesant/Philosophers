@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 17:58:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:14:59 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,10 @@ typedef struct s_dining_etiquette
 	t_philo			philosophers[200];
 }					t_dining_etiquette;
 
+/*---------------------------GETTERS-----------------------------------------*/
 t_dining_etiquette	*ft_get_rules(void);
-int					ft_philosophers_sit_down(t_dining_etiquette **rules);
-t_bool				ft_eat_meal(t_philo *philo);
-int					ft_init_fork_mutex(void);
-long long			ft_return_time_of_day(void);
-long long			ft_get_ms(void);
-void				ft_activity_time(long long time);
-void				ft_historian(void);
-void				ft_print_actions(t_philo *philo, char *action);
-t_bool				ft_dead_or_alive(void);
-t_bool				ft_is_dead(t_philo *philo);
 t_mutex				*ft_get_mutex(void);
-void				ft_exit(void);
-int					ft_how_many_finished(void);
-void				*ft_alone_in_the_dark(void *void_philo);
+/*---------------------------------------------------------------------------*/
 
 /*---------------------------USER-VALIDATIONS--------------------------------*/
 t_bool				ft_validate_user_input(int argc, char **argv);
@@ -84,4 +73,43 @@ long				ft_atol(char *number_string);
 void				ft_set_tabble_manners(t_dining_etiquette **tabble_manners,
 						char **argv);
 void				ft_set_philosophers_rules(t_dining_etiquette **rules);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------MONITOR-----------------------------------------*/
+void				ft_historian(void);
+t_bool				ft_dead_or_alive(void);
+t_bool				ft_is_dead(t_philo *philo);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------ROUTINE-----------------------------------------*/
+void				*ft_philosophers_arrive_for_dinner(void *void_philo);
+void				*ft_alone_in_the_dark(void *void_philo);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------PRINT-------------------------------------------*/
+void				ft_print_actions(t_philo *philo, char *action);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------TIMESTAMP---------------------------------------*/
+long long			ft_return_time_of_day(void);
+long long			ft_get_ms(void);
+void				ft_activity_time(long long time);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------THREADS-----------------------------------------*/
+int					ft_init_fork_mutex(void);
+int					ft_philosophers_sit_down(t_dining_etiquette **rules);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------MEALS-------------------------------------------*/
+t_bool				ft_eat_meal(t_philo *philo);
+t_bool				ft_all_eaten(void);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------EXIT--------------------------------------------*/
+void				ft_exit(void);
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------UTILS-------------------------------------------*/
+int					ft_how_many_finished(void);
 /*---------------------------------------------------------------------------*/

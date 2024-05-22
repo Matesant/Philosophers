@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:08:33 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 15:20:39 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:04:33 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ static t_bool	ft_number_args(int user_input)
 
 static t_bool	ft_check_not_number(char **argv)
 {
-	int	i;
-	int	j;
+	int	parameter;
+	int	ascii;
 
-	i = 1;
-	while (argv[i])
+	parameter = 1;
+	while (argv[parameter])
 	{
-		j = 0;
-		while (argv[i][j])
+		ascii = 0;
+		while (argv[parameter][ascii])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[parameter][ascii]))
 			{
 				printf("Error: arguments must be numbers\n");
 				return (TRUE);
 			}
-			j++;
+			ascii++;
 		}
-		i++;
+		parameter++;
 	}
 	return (FALSE);
 }
