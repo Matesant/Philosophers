@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:06:58 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:07:33 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:14:25 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_alone_in_the_dark(void *void_philo)
 	pthread_mutex_t	*forks;
 
 	philo = (t_philo *)void_philo;
-	forks = ft_get_rules()->forks;
+	forks = ft_get_mutex()->forks;
 	pthread_mutex_lock(&forks[philo->left_fork]);
 	ft_print_actions(philo, "has taken a fork");
 	pthread_mutex_unlock(&forks[philo->left_fork]);

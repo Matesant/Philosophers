@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 14:35:34 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 14:36:40 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:16:09 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	ft_init_fork_mutex(void)
 {
-	int					id;
-	t_dining_etiquette	*rules;
+	int		id;
+	t_mutex	*mutex;
 
 	id = ft_get_rules()->numb_philo;
-	rules = ft_get_rules();
+	mutex = ft_get_mutex();
 	while (id >= 0)
 	{
-		if (pthread_mutex_init(&(rules)->forks[id], NULL))
+		if (pthread_mutex_init(&(mutex)->forks[id], NULL))
 			return (1);
 		id--;
 	}
-	if (pthread_mutex_init(&rules->waiting_for_philo_take_fork, NULL))
+	if (pthread_mutex_init(&mutex->waiting_for_philo_take_fork, NULL))
 		return (1);
-	if (pthread_mutex_init(&rules->write_rights, NULL))
+	if (pthread_mutex_init(&mutex->write_rights, NULL))
 		return (1);
-	if (pthread_mutex_init(&ft_get_mutex()->meals_verification, NULL))
+	if (pthread_mutex_init(&mutex->meals_verification, NULL))
 		return (1);
-	if (pthread_mutex_init(&ft_get_mutex()->philo_dead_verification, NULL))
+	if (pthread_mutex_init(&mutex->philo_dead_verification, NULL))
 		return (1);
 	return (0);
 }

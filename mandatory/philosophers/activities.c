@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 22:34:54 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 15:51:33 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:14:42 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_get_forks(t_philo *philo)
 {
 	pthread_mutex_t	*forks;
 
-	forks = ft_get_rules()->forks;
+	forks = ft_get_mutex()->forks;
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(&forks[philo->right_fork]);
@@ -51,7 +51,7 @@ static void	ft_return_forks(t_philo *philo)
 {
 	pthread_mutex_t	*forks;
 
-	forks = ft_get_rules()->forks;
+	forks = ft_get_mutex()->forks;
 	pthread_mutex_unlock(&forks[philo->left_fork]);
 	pthread_mutex_unlock(&forks[philo->right_fork]);
 }

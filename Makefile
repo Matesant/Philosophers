@@ -20,43 +20,43 @@ all: $(BIN) $(NAME)
 $(BIN):
 	@mkdir -p $(BIN)
 
-$(BIN)%.o: ./src/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/user_validations/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/user_validations/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/utils/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/utils/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/philosophers_rules/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/philosophers_rules/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/philosophers/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/philosophers/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/time_management/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/time_management/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(BIN)%.o: ./src/monitor/%.c $(HEADER)philosophers.h
+$(BIN)%.o: ./mandatory/monitor/%.c $(HEADER)philosophers.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"

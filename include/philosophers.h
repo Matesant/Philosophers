@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:23:45 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:13:51 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ typedef enum e_bool
 
 typedef struct s_mutex
 {
+	pthread_mutex_t	waiting_for_philo_take_fork;
 	pthread_mutex_t	philo_dead_verification;
 	pthread_mutex_t	meals_verification;
+	pthread_mutex_t	write_rights;
+	pthread_mutex_t	forks[200];
 }					t_mutex;
 
 typedef struct s_philo
@@ -52,9 +55,6 @@ typedef struct s_dining_etiquette
 	int				number_times_philo_must_eat;
 	int				philos_finished_eating;
 	long long		program_start_time;
-	pthread_mutex_t	forks[200];
-	pthread_mutex_t	waiting_for_philo_take_fork;
-	pthread_mutex_t	write_rights;
 	t_philo			philosophers[200];
 }					t_dining_etiquette;
 
