@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:20 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/23 13:13:51 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:12:56 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+
+# define YELLOW "\001\033[1;33m\002"
+# define GREEN "\001\033[1;32m\002"
+# define RED "\001\033[1;31m\002"
+# define BLUE "\001\033[1;94m\002"
+# define PURPLE "\001\033[1;35m\002"
+# define CYAN "\001\033[1;36m\002"
+# define WHITE "\001\033[1;37m\002"
+# define RESET "\001\033[0m\002"
 
 typedef enum e_bool
 {
@@ -37,7 +46,6 @@ typedef struct s_mutex
 typedef struct s_philo
 {
 	int				id;
-	int				meals;
 	int				left_fork;
 	int				right_fork;
 	long long		last_meal;
@@ -51,8 +59,8 @@ typedef struct s_dining_etiquette
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				corpse;
 	int				number_times_philo_must_eat;
+	int				corpse;
 	int				philos_finished_eating;
 	long long		program_start_time;
 	t_philo			philosophers[200];

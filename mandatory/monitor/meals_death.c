@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:13 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/22 18:25:51 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:24:43 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_bool	ft_there_is_a_corpse_on_table(t_philo *philo)
 {
 	if (ft_is_dead(philo))
 	{
-		ft_print_actions(philo, "died");
+		ft_print_actions(philo, RED"😭 died"RESET);
 		pthread_mutex_lock(&ft_get_mutex()->philo_dead_verification);
 		ft_get_rules()->corpse = 1;
 		pthread_mutex_unlock(&ft_get_mutex()->philo_dead_verification);

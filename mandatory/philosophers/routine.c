@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:06:58 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/23 13:14:25 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:25:26 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	*ft_philosophers_arrive_for_dinner(void *void_philo)
 		if (ft_all_eaten())
 			break ;
 		ft_eat_meal(philo);
-		ft_print_actions(philo, "is sleeping");
+		ft_print_actions(philo, PURPLE"😴 is sleeping"RESET);
 		ft_activity_time(ft_get_rules()->time_to_sleep);
-		ft_print_actions(philo, "is thinking");
+		ft_print_actions(philo, GREEN"🤔 is thinking"RESET);
 		ft_activity_time(1);
 	}
 	return (NULL);
