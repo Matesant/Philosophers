@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meals_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:25:13 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/23 19:24:43 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:34:11 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ t_bool	ft_there_is_a_corpse_on_table(t_philo *philo)
 
 t_bool	ft_completed_caloric_intake(t_dining_etiquette *rules)
 {
-	int	id;
-
-	id = 0;
 	if (rules->number_times_philo_must_eat == -1)
 		return (FALSE);
 	if (ft_how_many_finished() == rules->numb_philo)
