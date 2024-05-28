@@ -1,9 +1,9 @@
 CC			:= cc
-NAME 		:= philo
+NAME 		:= philo_bonus
 CFLAGS		:= -Wall -Werror -Wextra -g3 -O0 -pthread
 BIN			:= ./bin/
 HEADER		:= ./include/
-SOURCE		:=	main.c print.c tabble_manners.c time_measure.c args_check_utils.c user_input.c ft_atol.c \
+SOURCE		:=	main.c print.c tabble_manners.c time_measure.c args_check_utils.c user_input.c ft_atol.c routine.c activities.c\
 				dinning.c
 
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))

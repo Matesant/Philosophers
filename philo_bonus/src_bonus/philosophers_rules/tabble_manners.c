@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tabble_manners.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:02:46 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 17:13:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:56:03 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_set_tabble_manners(t_dining_etiquette **tabble_manners, char **argv)
 		(*tabble_manners)->number_times_philo_must_eat = ft_atol(argv[5]);
 	else
 		(*tabble_manners)->number_times_philo_must_eat = -1;
+(*tabble_manners)->forks =
 }
 
 void ft_init_philos(void)

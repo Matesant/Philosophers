@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 17:18:02 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:32:48 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
-# include <unistd.h>
 # include <sys/wait.h>
+# include <unistd.h>
 
 # define YELLOW "\001\033[1;33m\002"
 # define GREEN "\001\033[1;32m\002"
@@ -55,6 +55,7 @@ typedef struct s_dining_etiquette
 	int				philos_finished_eating;
 	long long		program_start_time;
 	t_philo			philosophers[200];
+	sem_t			*forks;
 }					t_dining_etiquette;
 
 void				ft_set_tabble_manners(t_dining_etiquette **tabble_manners,
@@ -68,6 +69,8 @@ long				ft_atol(char *number_string);
 t_dining_etiquette	*ft_get_rules(void);
 void				ft_init_philos(void);
 void				ft_dinning_hall(t_philo *philo);
+void				ft_im_hungry(t_philo *philo);
+void				ft_eat(t_philo *philo);
 
 /*-------------------------PRINT---------------------*/
 void				ft_print_actions(t_philo *philo, char *action);
