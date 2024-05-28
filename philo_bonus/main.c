@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:54 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 22:42:34 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:02:57 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,8 @@ int	main(int argc, char **argv)
 	rules = ft_get_rules();
 	ft_validate_user_input(argc, argv);
 	ft_set_tabble_manners(&rules, argv);
-	ft_print_rules(rules);
-	// ft_print_philo(rules->philosophers);
-	// sem_init(rules->forks, 1, rules->numb_philo);
-	// ft_init_philos();
-	// ft_dinning_hall(rules->philosophers);
+	ft_init_philos();
+	ft_dinning_hall(rules->philosophers);
 	return (0);
 }
 

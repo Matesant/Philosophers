@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:16:04 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 22:38:07 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:09:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,21 @@ void	ft_get_forks(t_philo *philo)
 	t_dining_etiquette	*rules;
 
 	rules = ft_get_rules();
-	sem_wait(rules->forks);
-	ft_print_actions(philo, "has taken a fork");
-	sem_wait(rules->forks);
-	ft_print_actions(philo, "has taken a fork");
+	if (philo->id % 2)
+	{
+		sem_wait(rules->forks);
+		ft_print_actions(philo, "has taken a fork");
+		sem_wait(rules->forks);
+		ft_print_actions(philo, "has taken a fork");
+	}
+	else
+	{
+		usleep(100);
+		sem_wait(rules->forks);
+		ft_print_actions(philo, "has taken a fork");
+		sem_wait(rules->forks);
+		ft_print_actions(philo, "has taken a fork");
+	}
 }
 
 void	ft_return_forks(void)

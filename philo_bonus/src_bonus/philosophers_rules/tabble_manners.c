@@ -6,13 +6,13 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:02:46 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 22:56:03 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 00:11:36 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void ft_put_id(t_philo *philo, int id);
+void	ft_put_id(t_philo *philo, int id);
 
 void	ft_set_tabble_manners(t_dining_etiquette **tabble_manners, char **argv)
 {
@@ -24,13 +24,14 @@ void	ft_set_tabble_manners(t_dining_etiquette **tabble_manners, char **argv)
 		(*tabble_manners)->number_times_philo_must_eat = ft_atol(argv[5]);
 	else
 		(*tabble_manners)->number_times_philo_must_eat = -1;
-(*tabble_manners)->forks =
+	(*tabble_manners)->forks = malloc(sizeof(sem_t));
+	sem_init((*tabble_manners)->forks, 1, (*tabble_manners)->numb_philo);
 }
 
-void ft_init_philos(void)
+void	ft_init_philos(void)
 {
-	int id;
-	t_dining_etiquette *rules;
+	int					id;
+	t_dining_etiquette	*rules;
 
 	id = 0;
 	rules = ft_get_rules();
@@ -41,10 +42,9 @@ void ft_init_philos(void)
 	}
 }
 
-void ft_put_id(t_philo *philo, int id)
+void	ft_put_id(t_philo *philo, int id)
 {
-	philo->id = id;
+	philo->id = id + 1;
 	philo->last_meal = 0;
 	philo->eating_sessions = 0;
-	philo->pid = 0;
 }
