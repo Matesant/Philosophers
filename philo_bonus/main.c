@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:54 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 00:02:57 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:21:02 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	main(int argc, char **argv)
 	ft_validate_user_input(argc, argv);
 	ft_set_tabble_manners(&rules, argv);
 	ft_init_philos();
+	ft_init_semaphore();
 	ft_dinning_hall(rules->philosophers);
+	//ft_wait_philos();
 	return (0);
 }
 

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 22:32:48 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:31:41 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
+# include <fcntl.h>
 # include <pthread.h>
 # include <semaphore.h>
 # include <stdio.h>
@@ -56,11 +57,12 @@ typedef struct s_dining_etiquette
 	long long		program_start_time;
 	t_philo			philosophers[200];
 	sem_t			*forks;
+	sem_t			*print;
 }					t_dining_etiquette;
 
 void				ft_set_tabble_manners(t_dining_etiquette **tabble_manners,
 						char **argv);
-void				ft_activity_time(long long time);
+t_bool				ft_activity_time(long long time, t_philo *philo);
 long long			ft_get_ms(void);
 long long			ft_return_time_of_day(void);
 int					ft_isdigit(int c);
@@ -71,6 +73,8 @@ void				ft_init_philos(void);
 void				ft_dinning_hall(t_philo *philo);
 void				ft_im_hungry(t_philo *philo);
 void				ft_eat(t_philo *philo);
+void				ft_init_semaphore(void);
+t_bool				ft_historian(t_philo *philo);
 
 /*-------------------------PRINT---------------------*/
 void				ft_print_actions(t_philo *philo, char *action);

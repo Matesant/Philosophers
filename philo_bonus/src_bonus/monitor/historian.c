@@ -1,60 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dinning.c                                          :+:      :+:    :+:   */
+/*   historian.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 17:03:23 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 14:27:40 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/28 13:50:26 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/28 18:30:22 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_philo_sit_down(t_philo *philo);
+t_bool	ft_corpse_on_table(void);
+t_bool	ft_is_dead(t_philo *philo);
 
-void	ft_dinning_hall(t_philo *philo)
-{
-	int					id;
-	t_dining_etiquette	*rules;
-
-	id = 0;
-	rules = ft_get_rules();
-	rules->program_start_time = ft_get_ms();
-	while (id < rules->numb_philo)
-	{
-		ft_philo_sit_down(&philo[id]);
-		id++;
-	}
-	waitpid(-1, NULL, 0);
-}
-
-void	ft_philo_sit_down(t_philo *philo)
-{
-	philo->pid = fork();
-	if (philo->pid < 0)
-	{
-		perror("fork failed");
-		exit(1);
-	}
-	else if (philo->pid == 0)
-	{
-		ft_im_hungry(philo);
-		exit(0);
-	}
-}
-
-void ft_wait_philos(void)
+t_bool	ft_historian(t_philo *philo)
 {
 	t_dining_etiquette	*rules;
-	int					id;
 
-	id = 0;
 	rules = ft_get_rules();
-	while (id < rules->numb_philo)
-	{
-		waitpid(-1, NULL, 0);
-		id++;
-	}
+	if (ft_is_dead(philo))
+		return (1);
+	return (0);
+}
+
+t_bool	ft_is_dead(t_philo *philo)
+{
+	t_dining_etiquette	*rules;
+	long long			current_time;
+
+	rules = ft_get_rules();
+	current_time = ft_get_ms();
+	if (current_time - philo->last_meal > rules->time_to_die)
+		return (1);
+	return (0);
+}
+
+t_bool	ft_corpse_on_table(void)
+{
+	t_dining_etiquette	*rules;
+
+	rules = ft_get_rules();
+	if (rules->corpse)
+		return (1);
+	return (0);
 }

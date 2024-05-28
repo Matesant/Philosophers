@@ -3,7 +3,7 @@ NAME 		:= philo_bonus
 CFLAGS		:= -Wall -Werror -Wextra -g3 -O0 -pthread
 BIN			:= ./bin/
 HEADER		:= ./include/
-SOURCE		:=	main.c print.c tabble_manners.c time_measure.c args_check_utils.c user_input.c ft_atol.c routine.c activities.c\
+SOURCE		:=	main.c print.c tabble_manners.c time_measure.c args_check_utils.c user_input.c ft_atol.c routine.c activities.c semaphore.c historian.c\
 				dinning.c
 
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
@@ -55,6 +55,12 @@ $(BIN)%.o: ./src_bonus/philosophers_rules/%.c $(HEADER)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
 $(BIN)%.o: ./src_bonus/forks_creation/%.c $(HEADER)
+	@printf "$(BLUE)-----------------------------------------------$(END)\n"
+	@printf "$(BLUE)Compiling $<...$(END)\n"
+	@printf "$(BLUE)-----------------------------------------------$(END)\n"
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
+
+$(BIN)%.o: ./src_bonus/monitor/%.c $(HEADER)
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"

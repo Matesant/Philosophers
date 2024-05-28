@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   semaphore.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 22:15:16 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 18:34:49 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/28 13:35:46 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/28 13:59:01 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	ft_im_hungry(t_philo *philo)
+void	ft_init_semaphore(void)
 {
-	int					i;
 	t_dining_etiquette	*rules;
 
-	i = 0;
 	rules = ft_get_rules();
-	while (i < 5)
-	{
-		ft_eat(philo);
-		ft_print_actions(philo, "is sleeping");
-		if (ft_activity_time(rules->time_to_sleep, philo))
-		{
-			printf("%lld %d died\n", ft_get_ms(), philo->id);
-			exit(1);
-		}
-		ft_print_actions(philo, "is thinking");
-		usleep(1000);
-		i++;
-	}
+	sem_unlink("forks");
+	sem_unlink("print");
+	rules->print = sem_open("print", O_CREAT | O_RDWR, 0644, 1);
+	rules->forks = sem_open("/forks", O_CREAT | O_RDWR, 0644, rules->numb_philo);
 }

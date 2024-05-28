@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:49:05 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 14:25:56 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:31:30 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ long long	ft_get_ms(void)
 	return (ft_return_time_of_day() - ft_get_rules()->program_start_time);
 }
 
-void	ft_activity_time(long long time)
+t_bool	ft_activity_time(long long time, t_philo *philo)
 {
-	usleep(time * 1000);
-}
+	long long	current_time;
 
+	current_time = ft_get_ms();
+	while (ft_get_ms() - current_time < time)
+	{
+		usleep(10);
+		if (ft_historian(philo))
+			return (1);
+	}
+	return (0);
+}

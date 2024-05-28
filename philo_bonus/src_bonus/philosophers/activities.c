@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   activities.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:16:04 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 00:09:20 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:32:48 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ void	ft_eat(t_philo *philo)
 	rules = ft_get_rules();
 	ft_get_forks(philo);
 	ft_print_actions(philo, "is eating");
-	ft_activity_time(rules->time_to_eat);
+	if (ft_activity_time(rules->time_to_eat, philo))
+	{
+		printf("%lld philo %d died\n", ft_get_ms(), philo->id);
+		exit(1);
+	}
 	ft_update_last_meal_time(philo);
 	ft_return_forks();
 }
@@ -33,21 +37,10 @@ void	ft_get_forks(t_philo *philo)
 	t_dining_etiquette	*rules;
 
 	rules = ft_get_rules();
-	if (philo->id % 2)
-	{
-		sem_wait(rules->forks);
-		ft_print_actions(philo, "has taken a fork");
-		sem_wait(rules->forks);
-		ft_print_actions(philo, "has taken a fork");
-	}
-	else
-	{
-		usleep(100);
-		sem_wait(rules->forks);
-		ft_print_actions(philo, "has taken a fork");
-		sem_wait(rules->forks);
-		ft_print_actions(philo, "has taken a fork");
-	}
+	sem_wait(rules->forks);
+	sem_wait(rules->forks);
+	ft_print_actions(philo, "has taken a fork");
+	ft_print_actions(philo, "has taken a fork");
 }
 
 void	ft_return_forks(void)
