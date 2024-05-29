@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*   philosophers_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 18:31:41 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:14:00 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_BONUS_H
-# define PHILO_BONUS_H
+#ifndef PHILOSOPHERS_BONUS_H
+# define PHILOSOPHERS_BONUS_H
 
 # include <fcntl.h>
 # include <pthread.h>
@@ -21,6 +21,7 @@
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <signal.h>
 
 # define YELLOW "\001\033[1;33m\002"
 # define GREEN "\001\033[1;32m\002"
@@ -75,6 +76,8 @@ void				ft_im_hungry(t_philo *philo);
 void				ft_eat(t_philo *philo);
 void				ft_init_semaphore(void);
 t_bool				ft_historian(t_philo *philo);
+void				ft_wait_philos(void);
+void				ft_kill_philo_fork(t_dining_etiquette *rules);
 
 /*-------------------------PRINT---------------------*/
 void				ft_print_actions(t_philo *philo, char *action);

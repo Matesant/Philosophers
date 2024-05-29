@@ -1,10 +1,10 @@
 CC			:= cc
 NAME 		:= philo_bonus
-CFLAGS		:= -Wall -Werror -Wextra -g3 -O0 -pthread
+CFLAGS		:= -Wall -Werror -Wextra -g3 -O0
 BIN			:= ./bin/
 HEADER		:= ./include/
-SOURCE		:=	main.c print.c tabble_manners.c time_measure.c args_check_utils.c user_input.c ft_atol.c routine.c activities.c semaphore.c historian.c\
-				dinning.c
+SOURCE		:=	main_bonus.c print_bonus.c tabble_manners_bonus.c time_measure_bonus.c args_check_utils_bonus.c user_input_bonus.c ft_atol_bonus.c routine_bonus.c activities_bonus.c semaphore_bonus.c historian_bonus.c\
+				dinning_bonus.c kill_forks_bonus.c wait_philos_bonus.c
 
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
 
@@ -66,7 +66,7 @@ $(BIN)%.o: ./src_bonus/monitor/%.c $(HEADER)
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
-$(NAME): $(OBJECTS) $(HEADER)philo_bonus.h
+$(NAME): $(OBJECTS) $(HEADER)philosophers_bonus.h
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $(NAME)...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
@@ -87,6 +87,6 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo_bonus 4 600 100 100
 
 .PHONY: all clean fclean re val

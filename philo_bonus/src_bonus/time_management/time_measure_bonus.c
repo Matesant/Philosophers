@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_measure.c                                     :+:      :+:    :+:   */
+/*   time_measure_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:49:05 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 18:31:30 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:39 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 long long	ft_return_time_of_day(void)
 {

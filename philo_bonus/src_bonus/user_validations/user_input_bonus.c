@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   user_input.c                                       :+:      :+:    :+:   */
+/*   user_input_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:08:33 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 14:26:07 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:43 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 static t_bool	ft_number_args(int argc);
 static t_bool	ft_check_not_number(char **argv);

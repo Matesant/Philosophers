@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tabble_manners.c                                   :+:      :+:    :+:   */
+/*   tabble_manners_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:02:46 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 13:35:25 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:31 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 void	ft_put_id(t_philo *philo, int id);
 

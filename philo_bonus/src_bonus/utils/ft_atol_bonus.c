@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_atol_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:14:11 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 14:26:11 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:47 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 long	ft_atol(char *number_string)
 {
@@ -21,6 +21,8 @@ long	ft_atol(char *number_string)
 	actual_char = 0;
 	number_ascii = 0;
 	positive_negative = 1;
+	if (!number_string)
+		return (-1);
 	if (number_string[actual_char] == '-')
 	{
 		positive_negative = -1;

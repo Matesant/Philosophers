@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   activities.c                                       :+:      :+:    :+:   */
+/*   activities_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:16:04 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 18:32:48 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:26 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 void		ft_get_forks(t_philo *philo);
 void		ft_return_forks(void);
@@ -26,7 +26,7 @@ void	ft_eat(t_philo *philo)
 	if (ft_activity_time(rules->time_to_eat, philo))
 	{
 		printf("%lld philo %d died\n", ft_get_ms(), philo->id);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	ft_update_last_meal_time(philo);
 	ft_return_forks();

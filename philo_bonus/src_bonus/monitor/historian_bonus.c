@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   historian.c                                        :+:      :+:    :+:   */
+/*   historian_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:50:26 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/28 18:30:22 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 19:15:17 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
 t_bool	ft_corpse_on_table(void);
 t_bool	ft_is_dead(t_philo *philo);
 
 t_bool	ft_historian(t_philo *philo)
 {
-	t_dining_etiquette	*rules;
-
-	rules = ft_get_rules();
 	if (ft_is_dead(philo))
 		return (1);
 	return (0);

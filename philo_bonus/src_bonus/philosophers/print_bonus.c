@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check_utils.c                                 :+:      :+:    :+:   */
+/*   print_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matesant <matesant@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 14:17:49 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/27 14:26:02 by matesant         ###   ########.fr       */
+/*   Created: 2024/05/19 20:39:17 by matesant          #+#    #+#             */
+/*   Updated: 2024/05/29 19:15:20 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers_bonus.h"
 
-int	ft_isdigit(int c)
+void	ft_print_actions(t_philo *philo, char *action)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	printf("\033[1;37m%lld\033[0m %d %s\n", ft_get_ms(), philo->id, action);
 }
