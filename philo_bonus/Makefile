@@ -4,7 +4,7 @@ CFLAGS		:= -Wall -Werror -Wextra -g3 -O0
 BIN			:= ./bin/
 HEADER		:= ./include/
 SOURCE		:=	main_bonus.c print_bonus.c tabble_manners_bonus.c time_measure_bonus.c args_check_utils_bonus.c user_input_bonus.c ft_atol_bonus.c routine_bonus.c activities_bonus.c semaphore_bonus.c historian_bonus.c\
-				dinning_bonus.c kill_forks_bonus.c wait_philos_bonus.c
+				dinning_bonus.c kill_forks_bonus.c wait_philos_bonus.c activities_utils_bonus.c
 
 OBJECTS		:= $(addprefix $(BIN),$(SOURCE:.c=.o))
 
@@ -18,7 +18,7 @@ all: $(BIN) $(NAME)
 $(BIN):
 	@mkdir -p $(BIN)
 
-$(BIN)%.o: ./%.c $(HEADER)
+$(BIN)%.o: ./src_bonus/%.c $(HEADER)
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"
 	@printf "$(BLUE)Compiling $<...$(END)\n"
 	@printf "$(BLUE)-----------------------------------------------$(END)\n"

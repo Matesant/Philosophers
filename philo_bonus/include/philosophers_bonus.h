@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/30 01:46:22 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 02:02:23 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void				ft_wait_philos(void);
 void				*ft_im_hungry(t_philo *philo);
 void				ft_sleep(t_philo *philo);
 void				ft_eat(t_philo *philo);
+void				ft_thinking(t_philo *philo);
 /*---------------------------------------------------------------------------*/
 
 /*-----------------------SEMAPHOR--------------------------------------------*/

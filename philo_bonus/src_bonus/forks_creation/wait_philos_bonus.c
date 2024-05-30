@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:33:21 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/30 01:38:50 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 01:47:38 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	ft_wait_philos(void)
 		id++;
 	}
 	if (exit_status != EXIT_SUCCESS)
-		ft_kill_philork(rules);
+		ft_kill_philo_fork(rules);
 }

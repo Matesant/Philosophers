@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:54 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/30 00:59:48 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 02:05:27 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	main(int argc, char **argv)
 	ft_init_philos();
 	ft_dinning_hall(rules->philosophers);
 	ft_wait_philos();
-	sem_close(rules->print);
-	sem_close(rules->forks);
-	sem_unlink("/print");
-	sem_unlink("/forks");
+	ft_close_semaphore();
 	return (0);
 }
 
