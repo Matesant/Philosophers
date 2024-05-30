@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/30 01:35:09 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 01:46:22 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,54 @@ typedef struct s_dining_etiquette
 	sem_t			*print;
 }					t_dining_etiquette;
 
+/*-------------------------GETTERS-------------------------------------------*/
+t_dining_etiquette	*ft_get_rules(void);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------PRINT---------------------------------------------*/
+void				ft_print_actions(t_philo *philo, char *action);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------UTILS---------------------------------------------*/
+int					ft_isdigit(int c);
+long				ft_atol(char *number_string);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------ERRORS--------------------------------------------*/
+t_bool				ft_validate_user_input(int argc, char **argv);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------INIT----------------------------------------------*/
 void				ft_set_tabble_manners(t_dining_etiquette **tabble_manners,
 						char **argv);
+void				ft_init_philos(void);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------FORKS---------------------------------------------*/
+void				ft_dinning_hall(t_philo *philo);
+void				ft_kill_philo_fork(t_dining_etiquette *rules);
+void				ft_wait_philos(void);
+/*---------------------------------------------------------------------------*/
+
+/*------------------PHILO_ACTIONS--------------------------------------------*/
+void				*ft_im_hungry(t_philo *philo);
+void				ft_sleep(t_philo *philo);
+void				ft_eat(t_philo *philo);
+/*---------------------------------------------------------------------------*/
+
+/*-----------------------SEMAPHOR--------------------------------------------*/
+void				ft_close_semaphore(void);
+void				ft_init_semaphore(void);
+/*---------------------------------------------------------------------------*/
+
+/*-------------------------MONITOR-------------------------------------------*/
+t_bool				ft_historian(t_philo *philo);
+/*---------------------------------------------------------------------------*/
+
+/*--------------------TIME-STAMP---------------------------------------------*/
 t_bool				ft_activity_time(long long time, t_philo *philo);
 long long			ft_get_ms(void);
 long long			ft_return_time_of_day(void);
-int					ft_isdigit(int c);
-t_bool				ft_validate_user_input(int argc, char **argv);
-long				ft_atol(char *number_string);
-t_dining_etiquette	*ft_get_rules(void);
-void				ft_init_philos(void);
-void				ft_dinning_hall(t_philo *philo);
-void				*ft_im_hungry(t_philo *philo);
-void				ft_eat(t_philo *philo);
-void				ft_init_semaphore(void);
-t_bool				ft_historian(t_philo *philo);
-void				ft_wait_philos(void);
-void				ft_kill_philo_fork(t_dining_etiquette *rules);
-void				ft_sleep(t_philo *philo);
-void				ft_close_semaphore(void);
-
-/*-------------------------PRINT---------------------*/
-void				ft_print_actions(t_philo *philo, char *action);
-/*-------------------------UTILS---------------------*/
+/*---------------------------------------------------------------------------*/
 
 #endif
