@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:33:21 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/29 19:15:34 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:19:49 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_wait_philos(void)
 	t_dining_etiquette	*rules;
 
 	id = 0;
-	exit_status = 0;
+	exit_status = EXIT_SUCCESS;
 	rules = ft_get_rules();
 	while (id < rules->numb_philo)
 	{

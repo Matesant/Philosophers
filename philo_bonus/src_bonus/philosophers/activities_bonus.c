@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:16:04 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/29 19:15:26 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:31:15 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	ft_eat(t_philo *philo)
 	rules = ft_get_rules();
 	ft_get_forks(philo);
 	ft_print_actions(philo, "is eating");
-	if (ft_activity_time(rules->time_to_eat, philo))
-	{
-		printf("%lld philo %d died\n", ft_get_ms(), philo->id);
-		exit(EXIT_FAILURE);
-	}
+	ft_activity_time(rules->time_to_eat, philo);
 	ft_update_last_meal_time(philo);
 	ft_return_forks();
 }
@@ -56,4 +52,16 @@ static void	ft_update_last_meal_time(t_philo *philo)
 {
 	philo->last_meal = ft_get_ms();
 	philo->eating_sessions++;
+}
+
+void	ft_sleep(t_philo *philo)
+{
+	t_dining_etiquette	*rules;
+
+	rules = ft_get_rules();
+	if (ft_activity_time(rules->time_to_sleep, philo))
+	{
+		ft_print_actions(philo, "is sleeping");
+		exit(EXIT_FAILURE);
+	}
 }

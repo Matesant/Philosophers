@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 16:49:05 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/29 19:15:39 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/29 22:45:42 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_bool	ft_activity_time(long long time, t_philo *philo)
 	current_time = ft_get_ms();
 	while (ft_get_ms() - current_time < time)
 	{
-		usleep(10);
+		usleep(1000);
 		if (ft_historian(philo))
 			return (1);
 	}

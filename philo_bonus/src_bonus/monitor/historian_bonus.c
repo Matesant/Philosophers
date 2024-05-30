@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:50:26 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/29 19:15:17 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 00:21:48 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_bool	ft_is_dead(t_philo *philo);
 t_bool	ft_historian(t_philo *philo)
 {
 	if (ft_is_dead(philo))
-		return (1);
+	{
+		ft_print_actions(philo, "died");
+		exit(EXIT_FAILURE);
+	}
 	return (0);
 }
 
