@@ -87,6 +87,6 @@ fclean: clean
 re: fclean all
 
 val:
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo_bonus 4 600 100 100
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo_bonus 200 60000 60 60 10
 
 .PHONY: all clean fclean re val

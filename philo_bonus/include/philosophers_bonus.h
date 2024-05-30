@@ -6,7 +6,7 @@
 /*   By: matesant <matesant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:46:08 by matesant          #+#    #+#             */
-/*   Updated: 2024/05/30 01:05:54 by matesant         ###   ########.fr       */
+/*   Updated: 2024/05/30 01:35:09 by matesant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_bool				ft_historian(t_philo *philo);
 void				ft_wait_philos(void);
 void				ft_kill_philo_fork(t_dining_etiquette *rules);
 void				ft_sleep(t_philo *philo);
+void				ft_close_semaphore(void);
 
 /*-------------------------PRINT---------------------*/
 void				ft_print_actions(t_philo *philo, char *action);
