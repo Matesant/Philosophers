@@ -52,4 +52,4 @@ $ ./philo 10 800 200 200 5
 ```
 
 ## Testing
-This function have been tested with [Francinette](https://github.com/xicodomingues/francinette).
+This function have been tested with [Nafuka Visualizer](https://nafuka11.github.io/philosophers-visualizer/).
